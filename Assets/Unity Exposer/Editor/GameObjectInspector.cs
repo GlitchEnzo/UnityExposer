@@ -22,7 +22,7 @@
 
 		public void OnPreviewGUI(Rect r, GUIStyle background)
 		{
-			MethodInfo methodInfo = ActualType.GetMethod("OnPreviewGUI", BindingFlags.Public | BindingFlags.Instance);
+			MethodInfo methodInfo = ActualType.GetMethodAll("OnPreviewGUI");
 			methodInfo.Invoke(Instance, new object[] {r, background});
 		}
 	}

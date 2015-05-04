@@ -5,17 +5,40 @@ using System.Reflection;
 
 public static class TypeExtensions
 {
+    private const BindingFlags BindAll = BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static;
+
     /// <summary>
-    /// Searches for the specified method whose parameters match the specified argument types and modifiers, using the specified binding constraints.
+    /// Searches for the method with the given name whose parameters match the specified argument types, searching ALL access types (public, non-public, static, and instance).
     /// </summary>
     /// <param name="type"></param>
     /// <param name="name">The string containing the name of the method to get.</param>
-    /// <param name="bindingAttr">A bitmask comprised of one or more BindingFlags that specify how the search is conducted.</param>
     /// <param name="types">An array of Type objects representing the number, order, and type of the parameters for the method to get. Use Type.EmptyTypes for no parameters.</param>
     /// <returns>An object representing the method that matches the specified requirements, if found; otherwise, null.</returns>
-    public static MethodInfo GetMethod(this Type type, string name, BindingFlags bindingAttr, Type[] types)
+    public static MethodInfo GetMethodAll(this Type type, string name, Type[] types)
     {
-        return type.GetMethod(name, bindingAttr, null, types, null);
+        return type.GetMethod(name, BindAll, null, types, null);
+    }
+
+    /// <summary>
+    /// Searches for a method with the given name, searching ALL access types (public, non-public, static, and instance).
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="name">The name of the method to search for.</param>
+    /// <returns></returns>
+    public static MethodInfo GetMethodAll(this Type type, string name)
+    {
+        return type.GetMethod(name, BindAll);
+    }
+
+    /// <summary>
+    /// Searches for a property with the given name, searching ALL access types (public, non-public, static, and instance).
+    /// </summary>
+    /// <param name="type"></param>
+    /// <param name="name">The name of the property to search for.</param>
+    /// <returns></returns>
+    public static PropertyInfo GetPropertyAll(this Type type, string name)
+    {
+        return type.GetProperty(name, BindAll);
     }
 
     /// <summary>

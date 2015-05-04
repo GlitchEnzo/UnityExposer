@@ -17,7 +17,7 @@
 
         public static bool ButtonMouseDown(Rect position, GUIContent content, FocusType focusType, GUIStyle style)
         {
-            MethodInfo methodInfo = ActualType.GetMethod("ButtonMouseDown", BindingFlags.NonPublic | BindingFlags.Static, new[] { typeof(Rect), typeof(GUIContent), typeof(FocusType), typeof(GUIStyle) });
+            MethodInfo methodInfo = ActualType.GetMethodAll("ButtonMouseDown", new[] { typeof(Rect), typeof(GUIContent), typeof(FocusType), typeof(GUIStyle) });
             return methodInfo.Invoke<bool>(new object[] { position, content, focusType, style });
         }
     }

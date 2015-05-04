@@ -19,25 +19,25 @@
 
         public static void BeginScrollView(Rect position, Vector2 scrollPosition, Rect viewRect, GUIStyle horizontalScrollbar, GUIStyle verticalScrollbar)
         {
-            MethodInfo methodInfo = ActualType.GetMethod("BeginScrollView", BindingFlags.NonPublic | BindingFlags.Static);
+            MethodInfo methodInfo = ActualType.GetMethodAll("BeginScrollView");
             methodInfo.Invoke(new object[] { position, scrollPosition, viewRect, horizontalScrollbar, verticalScrollbar });
         }
 
         public static int CycleButton(int selected, GUIContent[] options)
         {
-            MethodInfo methodInfo = ActualType.GetMethod("CycleButton", BindingFlags.Public | BindingFlags.Static);
+            MethodInfo methodInfo = ActualType.GetMethodAll("CycleButton");
             return methodInfo.Invoke<int>(new object[] { selected, options });
         }
 
         public static Vector2 EndScrollView()
         {
-            MethodInfo methodInfo = ActualType.GetMethod("EndScrollView", BindingFlags.Public | BindingFlags.Static);
+            MethodInfo methodInfo = ActualType.GetMethodAll("EndScrollView");
             return methodInfo.Invoke<Vector2>();
         }
 		
 		public static Vector2 Drag2D(Vector2 scrollPosition, Rect position)
 		{
-			MethodInfo methodInfo = ActualType.GetMethod("Drag2D", BindingFlags.Public | BindingFlags.Static);
+            MethodInfo methodInfo = ActualType.GetMethodAll("Drag2D");
 			return methodInfo.Invoke<Vector2>(new object[] {scrollPosition, position});
 		}
 	}
