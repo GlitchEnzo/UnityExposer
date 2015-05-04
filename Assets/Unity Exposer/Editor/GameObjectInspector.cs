@@ -6,25 +6,9 @@
 
 	public class GameObjectInspector
 	{
-		public object Instance { get; private set; }
+		private object Instance { get; set; }
 
-		public Type ActualType { get; private set; }
-
-		/// <summary>
-		/// Gets the k top.
-		/// 
-		/// Defined as: 
-		/// private const float kTop = 4f;
-		/// </summary>
-		/// <value>The k top.</value>
-		public float kTop
-		{
-			get
-			{
-				FieldInfo fieldInfo = ActualType.GetField("kTop", BindingFlags.NonPublic | BindingFlags.Static);
-				return (float)fieldInfo.GetValue(Instance);
-			}
-		}
+        private Type ActualType { get; set; }
 
 		/// <summary>
         /// Initializes a new instance of the <see cref="UnityEditor.Exposer.GameObjectInspector"/> class.

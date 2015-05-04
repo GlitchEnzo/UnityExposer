@@ -13,12 +13,12 @@
             get
             {
                 PropertyInfo propertyInfo = ActualType.GetProperty("className", BindingFlags.NonPublic | BindingFlags.Static);
-                return (string)propertyInfo.GetGetMethod().Invoke(null, null);
+                return propertyInfo.GetGetMethod().Invoke<string>();
             }
             set
             {
                 PropertyInfo propertyInfo = ActualType.GetProperty("className", BindingFlags.NonPublic | BindingFlags.Static);
-                propertyInfo.GetSetMethod().Invoke(null, new object[] { value });
+                propertyInfo.GetSetMethod().Invoke(new object[] { value });
             }
         }
 
@@ -27,12 +27,12 @@
             get
             {
                 PropertyInfo propertyInfo = ActualType.GetProperty("gameObjects", BindingFlags.NonPublic | BindingFlags.Static);
-                return (GameObject[])propertyInfo.GetGetMethod().Invoke(null, null);
+                return propertyInfo.GetGetMethod().Invoke<GameObject[]>();
             }
             set
             {
                 PropertyInfo propertyInfo = ActualType.GetProperty("gameObjects", BindingFlags.NonPublic | BindingFlags.Static);
-                propertyInfo.GetSetMethod().Invoke(null, new object[] { value });
+                propertyInfo.GetSetMethod().Invoke(new object[] { value });
             }
         }
 
@@ -44,25 +44,25 @@
         public static void ExecuteAddComponentMenuItem()
         {
             MethodInfo methodInfo = ActualType.GetMethod("ExecuteAddComponentMenuItem", BindingFlags.NonPublic | BindingFlags.Static);
-            methodInfo.Invoke(null, null);
+            methodInfo.Invoke();
         }
 
         public static bool Show(Rect rect, GameObject[] gos)
         {
             MethodInfo methodInfo = ActualType.GetMethod("Show", BindingFlags.NonPublic | BindingFlags.Static);
-            return (bool)methodInfo.Invoke(null, new object[] { rect, gos });
+            return methodInfo.Invoke<bool>(new object[] { rect, gos });
         }
 
         public static bool ValidateAddComponentMenuItem()
         {
             MethodInfo methodInfo = ActualType.GetMethod("ValidateAddComponentMenuItem", BindingFlags.NonPublic | BindingFlags.Static);
-            return (bool)methodInfo.Invoke(null, null);
+            return methodInfo.Invoke<bool>();
         }
 
         //public void OnGUI()
         //{
         //    MethodInfo methodInfo = ActualType.GetMethod("OnGUI", BindingFlags.NonPublic | BindingFlags.Instance);
-        //    methodInfo.Invoke(null, null);
+        //    methodInfo.Invoke(Instance);
         //}
     }
 }

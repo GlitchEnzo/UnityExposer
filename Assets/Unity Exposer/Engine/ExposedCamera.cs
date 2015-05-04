@@ -10,10 +10,10 @@
 		{
 		    get
 		    {
-		        Type cameraType = typeof (Camera);
+		        Type cameraType = typeof(Camera);
 
 		        PropertyInfo propertyInfo = cameraType.GetProperty("PreviewCullingLayer", BindingFlags.NonPublic | BindingFlags.Static);
-		        return (int)propertyInfo.GetGetMethod().Invoke(null, null);
+		        return propertyInfo.GetGetMethod().Invoke<int>();
 		    }
 		}
 	}
