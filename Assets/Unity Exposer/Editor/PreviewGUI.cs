@@ -1,8 +1,7 @@
-﻿namespace UnityExposer.Editor
+﻿namespace UnityEditor.Exposer
 {
 	using UnityEngine;
 	using System;
-	using System.Collections;
 	using System.Reflection;
 	
 	public class PreviewGUI

@@ -1,8 +1,7 @@
-﻿namespace UnityExposer.Editor
+﻿namespace UnityEditor.Exposer
 {
 	using UnityEngine;
 	using System;
-	using System.Collections;
 	using System.Reflection;
 
 	public class GameObjectInspector
@@ -22,13 +21,13 @@
 		{
 			get
 			{
-				FieldInfo fieldInfo = ActualType.GetField("kTop", BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.GetField);
+				FieldInfo fieldInfo = ActualType.GetField("kTop", BindingFlags.NonPublic | BindingFlags.Static);
 				return (float)fieldInfo.GetValue(Instance);
 			}
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="UnityExposer.GameObjectInspector"/> class.
+        /// Initializes a new instance of the <see cref="UnityEditor.Exposer.GameObjectInspector"/> class.
 		/// </summary>
 		/// <param name="instance">The actual UnityEditor.GameObjectInspector instance.</param>
 		public GameObjectInspector(object instance)
